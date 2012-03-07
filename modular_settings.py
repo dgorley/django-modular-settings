@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 init_content = """from .base import *
 
@@ -10,7 +11,7 @@ except ImportError:
 """
 
 def get_project_dir():
-    dir_list = os.path.abspath(__file__).split('/')[:-1]
+    dir_list = re.split(r'[\\/]', os.path.abspath(__file__))[:-1]
     return '/'.join(dir_list)
 
 def make_it_so():
